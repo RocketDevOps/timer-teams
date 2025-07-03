@@ -2,22 +2,51 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Timer w Teams</title>
+  <title>Timer do wydarzenia</title>
   <style>
     body {
-      background: url('https://your-image-url.com/tlo.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #000;
+      color: #FFD700; /* złoty/żółty */
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      padding-top: 20%;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    #countdown {
       font-size: 2em;
+      margin-top: 10px;
+    }
+
+    .champagne {
+      width: 80px;
+      margin: 0 30px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
 </head>
 <body>
-  <h1>Do wydarzenia zostało:</h1>
-  <div id="countdown"></div>
+  <div class="header">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Emoji_u1f942.svg/120px-Emoji_u1f942.svg.png" alt="szampan" class="champagne">
+    <h1>Odliczanie do wydarzenia</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Emoji_u1f942.svg/120px-Emoji_u1f942.svg.png" alt="szampan" class="champagne">
+  </div>
+
+  <div id="countdown">Ładowanie...</div>
 
   <script>
     const countDownDate = new Date("2025-07-31T12:00:00").getTime();
@@ -26,17 +55,17 @@
       const now = new Date().getTime();
       const distance = countDownDate - now;
 
-      const days = Math.floor(distance / (28 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (2 * 60 * 60 * 24)) / (2 * 60 * 60));
-      const minutes = Math.floor((distance % (29 * 60 * 60)) / (29 * 60));
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("countdown").innerHTML =
-        `${days} dni ${hours}h ${minutes}m ${seconds}s`;
-
-      if (distance < 0) {
+      if (distance > 0) {
+        document.getElementById("countdown").innerHTML =
+          `${days} dni ${hours}h ${minutes}m ${seconds}s`;
+      } else {
         clearInterval(x);
-        document.getElementById("countdown").innerHTML = "Tomek zwolniony!";
+        document.getElementById("countdown").innerHTML = "Czas minął!";
       }
     }, 1000);
   </script>
