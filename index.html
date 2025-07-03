@@ -47,7 +47,15 @@
   </div>
 
   <div id="countdown">Ładowanie...</div>
+<audio id="bg-music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2025/04/02/audio_0800f42606.mp3?filename=primavera-por-fin-finally-itx27s-spring-322120.mp3" type="audio/mpeg">
+  Twoja przeglądarka nie obsługuje odtwarzacza audio.
+</audio>
 
+<button onclick="document.getElementById('bg-music').play()" style="margin-top: 30px; font-size: 1.2em; padding: 10px 20px; background-color: #FFD700; border: none; color: black; cursor: pointer; border-radius: 8px;">
+  ▶️ Włącz muzykę
+</button>
+  
   <script>
     const countDownDate = new Date("2025-07-31T12:00:00").getTime();
 
